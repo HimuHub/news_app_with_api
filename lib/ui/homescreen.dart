@@ -51,18 +51,36 @@ class HomeScreen extends StatelessWidget {
                             Articles article = data.articles![index];
                             return Container(
                               width: width * 0.8,
-                              margin: EdgeInsets.symmetric(horizontal: 10.0),
+                              margin: EdgeInsets.symmetric(
+                                  horizontal: height * .02),
                               child: Stack(
                                 children: [
                                   ClipRRect(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    child: Image.network(
-                                      'https:${article.urlToImage}',
-                                      fit: BoxFit.cover,
-                                      width: width,
-                                      height: height * 0.55,
+                                      borderRadius: BorderRadius.circular(15.0),
+                                      child: Image.network(
+                                        article.urlToImage ?? "".toString(),
+                                      )),
+                                  Card(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(12)),
+                                    child: Container(
+                                      alignment: Alignment.bottomCenter,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Container(
+                                            width: width * .07,
+                                            child:
+                                                Text(article.title.toString()),
+                                          )
+                                        ],
+                                      ),
                                     ),
-                                  ),
+                                  )
                                 ],
                               ),
                             );
